@@ -2,8 +2,19 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Hello There !!!"/>
-    <card> 
-      </card>
+    <card :url="item.pokemon.url" v-for="item in pokemonOfRockType" :key="item.pokemon.name"></card>
+
+    <div v-for="item in pokemonOfRockType" :key="item.pokemon.name">
+      {{item.pokemon.name}}<br>
+      {{item.pokemon.url}}
+      <br><br>
+    </div>
+  
+    <div v-for="item in pokemonOfRockType" :key="item.pokemon.name">
+        {{ item.pokemon.name }}
+    </div>
+
+  
   </div>
 </template>
 
@@ -16,8 +27,29 @@ export default {
   components: {
     HelloWorld,
     card
+  },
+  data: function (){
+      return {
+            pokemonOfRockType: ""
+      }
+  },
+  mounted: function() {
+    console.log("mounted fucntion ran")
+    const axios = require('axios');
+    const vm = this;
+
+    axios({
+      method: 'get',
+      url: 'https://pokeapi.co/api/v2/type/rock',
+      responseType: 'stream'
+    })
+    .then(function (response) {
+      console.log(response.data.pokemon);
+      vm.pokemonOfRockType = response.data.pokemon
+    })
   }
 }
+
 </script>
 
 <style>

@@ -3,6 +3,7 @@
     <div class="card" style="width: 18rem;">
   <img class="card-img-top" v-bind:src= "pokemon.sprites.front_shiny" v-bind:alt="pokemon.name">
   <div class="card-body">
+      <h1>{{url}}</h1>
     <h5 class="card-title">{{pokemon.name}}</h5>
     <p class="card-text">Height={{pokemon.height}}</p>
     <p class="card-text">Weight={{pokemon.weight}}</p>
@@ -22,7 +23,7 @@ export default {
       }
   },
   props: {
-    msg: String
+    url: String
   },
   mounted: function(){
       console.log("mounted fucntion ran")
@@ -31,10 +32,10 @@ export default {
       const vm = this;
 
       axios({
-  method: 'get',
-  url: 'https://pokeapi.co/api/v2/pokemon/dratini',
-  responseType: 'stream'
-})
+    method: 'get',
+    url: vm.url,
+    responseType: 'stream'
+    })
   .then(function (response) {
     console.log(response.data);
     vm.pokemon = response.data
