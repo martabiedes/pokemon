@@ -1,16 +1,13 @@
 <template>
-  <div class="hello">
+  <div class="col-3">
     <div class="card" style="width: 18rem;">
-  <img class="card-img-top" v-bind:src= "pokemon.sprites.front_shiny" v-bind:alt="pokemon.name">
-  <div class="card-body">
-      <h1>{{url}}</h1>
-    <h5 class="card-title">{{pokemon.name}}</h5>
-    <p class="card-text">Height={{pokemon.height}}</p>
-    <p class="card-text">Weight={{pokemon.weight}}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-    
+        <img class="card-img-top" v-bind:src="pokemon.sprites.front_shiny" v-bind:alt="pokemon.name">
+        <div class="card-body">
+            <h5 class="card-title text-captialize">{{pokemon.name}}</h5>
+            <p class="card-text">Height={{pokemon.height}}</p>
+            <p class="card-text">Weight={{pokemon.weight}}</p>
+        </div>
+    </div>  
   </div>
 </template>
 
@@ -46,18 +43,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.card{
+    text-align: center;
+    margin-bottom: 30px;
 }
 </style>
